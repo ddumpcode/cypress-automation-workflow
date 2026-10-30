@@ -1,0 +1,202 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 3,
+    "passes": 3,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-10-30T00:24:35.757Z",
+    "end": "2026-10-30T00:24:48.969Z",
+    "duration": 13212,
+    "testsRegistered": 3,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "bbda5a2f-4829-4da2-b74a-df9ee43f2d64",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demoblaze\\navbar-footer.cy.js",
+      "file": "cypress\\e2e\\demoblaze\\navbar-footer.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7277a8a4-1222-4fe4-be53-c7b6ed5b7e9c",
+          "title": "Module Navigation and Footer Testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "e089f692-9c85-40e0-884e-dee6087d09f2",
+              "title": "Global Navigation Visibility",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should show navigation bar across different pages",
+                  "fullTitle": "Module Navigation and Footer Testing Global Navigation Visibility should show navigation bar across different pages",
+                  "timedOut": null,
+                  "duration": 3343,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "navbar.verifyNavigationBar();\nhomePage.clickProduct(\"Samsung galaxy s6\");\nnavbar.verifyNavigationBar();",
+                  "err": {},
+                  "uuid": "4581843c-bca9-44cd-94ef-3317c973b1cc",
+                  "parentUUID": "e089f692-9c85-40e0-884e-dee6087d09f2",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "4581843c-bca9-44cd-94ef-3317c973b1cc"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 3343,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "bc701375-e456-478e-a642-6f1621c3ec8b",
+              "title": "Navbar Routing & Link Behaviors",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should navigate to the correct section and display the target modals/pages",
+                  "fullTitle": "Module Navigation and Footer Testing Navbar Routing & Link Behaviors should navigate to the correct section and display the target modals/pages",
+                  "timedOut": null,
+                  "duration": 6490,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// home\nnavbar.clickHomeMenu();\nhomePage.verifyHomePageLoaded();\n// contact\nnavbar.clickContactUsButton();\ncontactModal.verifyModalIsVisible();\ncy.wait(500);\ncontactModal.clickCloseButton();\ncontactModal.verifyModalIsClosed();\n// about Us\nnavbar.clickAboutUsButton();\naboutUsModal.verifyModalIsVisible();\ncy.wait(500);\naboutUsModal.clickCloseButton();\naboutUsModal.verifyModalIsClosed();\n// cart\nnavbar.clickCartMenu();\ncartPage.verifyCartPageLoaded();\n// log in\nnavbar.clickLoginMenu();\nloginModal.verifyModalVisible();\ncy.wait(500);\nloginModal.clickCloseButton();\nloginModal.verifyModalClosed();\n// sign up\nnavbar.clickSignUpMenu();\nsignUpModal.verifyModalVisible();\ncy.wait(500);\nsignUpModal.clickCloseButton();\nsignUpModal.verifyModalClosed();",
+                  "err": {},
+                  "uuid": "dea24524-b86b-459f-85c2-abc68733a924",
+                  "parentUUID": "bc701375-e456-478e-a642-6f1621c3ec8b",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "dea24524-b86b-459f-85c2-abc68733a924"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 6490,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "b6f3bd12-7e23-4e87-97b2-f5f939689a9a",
+              "title": "Global Footer Consistency",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should display correct footer information on Home and Cart pages",
+                  "fullTitle": "Module Navigation and Footer Testing Global Footer Consistency should display correct footer information on Home and Cart pages",
+                  "timedOut": null,
+                  "duration": 1846,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "footer.verifyFooterVisible();\nfooter.verifyFooterContent();\nnavbar.clickCartMenu();\ncartPage.verifyCartPageLoaded();\nfooter.verifyFooterVisible();\nfooter.verifyFooterContent();",
+                  "err": {},
+                  "uuid": "a614a5e4-e728-4506-9e93-226a80ca8f2c",
+                  "parentUUID": "b6f3bd12-7e23-4e87-97b2-f5f939689a9a",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "a614a5e4-e728-4506-9e93-226a80ca8f2c"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1846,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/result",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

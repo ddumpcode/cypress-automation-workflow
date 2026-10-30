@@ -1,0 +1,226 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 4,
+    "passes": 3,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-10-30T00:23:29.913Z",
+    "end": "2026-10-30T00:23:51.299Z",
+    "duration": 21386,
+    "testsRegistered": 4,
+    "passPercent": 75,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "0fc60b0c-abc3-487f-93cd-8ac2508ee160",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demoblaze\\carousel.cy.js",
+      "file": "cypress\\e2e\\demoblaze\\carousel.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fdcb30df-c8f1-416e-bcae-ab6e175c0285",
+          "title": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content.",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "154761ec-f504-4311-b3da-8e0fdc990a43",
+              "title": "Auto Sliding Behavior",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "carousel should slide automatically",
+                  "fullTitle": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content. Auto Sliding Behavior carousel should slide automatically",
+                  "timedOut": null,
+                  "duration": 7781,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "carousel.verifyCarouselVisible();\ncarousel.verifyItemIsActive(0);\ncarousel.waitForAutoSlide();\ncarousel.verifyItemIsNotActive(0);\ncarousel.verifyItemIsActive(1);",
+                  "err": {},
+                  "uuid": "d1b59d9d-37a5-4e10-be4c-47a1d671537c",
+                  "parentUUID": "154761ec-f504-4311-b3da-8e0fdc990a43",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "d1b59d9d-37a5-4e10-be4c-47a1d671537c"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 7781,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "c9536878-7063-4e1e-a6d4-658be1974729",
+              "title": "Manual Sliding & Interaction",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "carousel should slide manualy via next and prev buttons",
+                  "fullTitle": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content. Manual Sliding & Interaction carousel should slide manualy via next and prev buttons",
+                  "timedOut": null,
+                  "duration": 1781,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "carousel.verifyCarouselVisible();\ncarousel.verifyItemIsActive(0);\n// next\ncarousel.clickNext();\ncarousel.verifyItemIsNotActive(0);\ncarousel.verifyItemIsActive(1);\n// prev\ncarousel.clickPrev();\ncarousel.verifyItemIsActive(0);\ncarousel.verifyItemIsNotActive(1);",
+                  "err": {},
+                  "uuid": "c689c6f7-ccff-4a3a-8e0f-ba0bc371ec82",
+                  "parentUUID": "c9536878-7063-4e1e-a6d4-658be1974729",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should not scroll the page down when carousel control is clicked rapidly",
+                  "fullTitle": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content. Manual Sliding & Interaction should not scroll the page down when carousel control is clicked rapidly",
+                  "timedOut": null,
+                  "duration": 1621,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "carousel.verifyPageNotScrolled();\ncarousel.rapidClickNext();\ncy.wait(500);\ncarousel.verifyPageNotScrolled();",
+                  "err": {
+                    "message": "Error: The following error originated from your application code, not from Cypress.\n\n  > Carousel is sliding\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application",
+                    "estack": "Error: The following error originated from your application code, not from Cypress.\n\n  > Carousel is sliding\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application\n    at h.next (https://www.demoblaze.com/node_modules/bootstrap/dist/js/bootstrap.min.js:6:7449)\n    at HTMLDivElement.<anonymous> (https://www.demoblaze.com/node_modules/bootstrap/dist/js/bootstrap.min.js:6:11568)\n    at r.each (https://www.demoblaze.com/node_modules/jquery/dist/jquery.min.js:2:2715)\n    at r.fn.init.each (https://www.demoblaze.com/node_modules/jquery/dist/jquery.min.js:2:1003)\n    at h._jQueryInterface [as carousel] (https://www.demoblaze.com/node_modules/bootstrap/dist/js/bootstrap.min.js:6:11235)\n    at h._dataApiClickHandler (https://www.demoblaze.com/node_modules/bootstrap/dist/js/bootstrap.min.js:6:11859)\n    at HTMLDocument.dispatch (https://www.demoblaze.com/node_modules/jquery/dist/jquery.min.js:3:10316)\n    at q.handle (https://www.demoblaze.com/node_modules/jquery/dist/jquery.min.js:3:8343)\n    at sendEvent (https://www.demoblaze.com/__cypress/runner/cypress_runner.js:159746:32)\n    at sendMouseEvent (https://www.demoblaze.com/__cypress/runner/cypress_runner.js:159100:12)",
+                    "diff": null
+                  },
+                  "uuid": "d9fd2b37-c0dc-45a9-b529-29349e8a75cf",
+                  "parentUUID": "c9536878-7063-4e1e-a6d4-658be1974729",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "c689c6f7-ccff-4a3a-8e0f-ba0bc371ec82"
+              ],
+              "failures": [
+                "d9fd2b37-c0dc-45a9-b529-29349e8a75cf"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 3402,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "5c8b07fd-0eb6-46c2-b54b-69d5e439b1bc",
+              "title": "State Preservation After Navigation",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should continue to auto-play normally when the user switches pages and comes back",
+                  "fullTitle": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content. State Preservation After Navigation should continue to auto-play normally when the user switches pages and comes back",
+                  "timedOut": null,
+                  "duration": 8536,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "carousel.verifyCarouselVisible();\nhomePage.clickProduct(\"Samsung galaxy s6\");\nhomePage.verifyProductDetailIsVisible();\nnavbar.clickHomeMenu();\ncarousel.verifyItemIsActive(0);\ncarousel.waitForAutoSlide();\ncarousel.verifyItemIsNotActive(0);\ncarousel.verifyItemIsActive(1);",
+                  "err": {},
+                  "uuid": "6ff316df-e1d0-4a27-9983-dd5d2685d17d",
+                  "parentUUID": "5c8b07fd-0eb6-46c2-b54b-69d5e439b1bc",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "6ff316df-e1d0-4a27-9983-dd5d2685d17d"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 8536,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/result",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

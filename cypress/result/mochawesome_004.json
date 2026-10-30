@@ -1,0 +1,221 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-10-30T00:23:19.293Z",
+    "end": "2026-10-30T00:23:28.553Z",
+    "duration": 9260,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "823ace66-0725-4b88-a813-342aa9f79cde",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demoblaze\\about.cy.js",
+      "file": "cypress\\e2e\\demoblaze\\about.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7705fa55-66e3-42e7-8289-411cf3a43cfb",
+          "title": "Users can access information about the company or platform (About Us) at any time and close it again without interruption.",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "6723877b-84af-4916-95d3-c4140de4896b",
+              "title": "Modal UI Interactions",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should showing modal about us and company video",
+                  "fullTitle": "Users can access information about the company or platform (About Us) at any time and close it again without interruption. Modal UI Interactions should showing modal about us and company video",
+                  "timedOut": null,
+                  "duration": 2072,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openAboutUsPage();\naboutUsModal.verifyModalIsVisible();",
+                  "err": {},
+                  "uuid": "27454aae-24fc-4864-b723-df60b37438f5",
+                  "parentUUID": "6723877b-84af-4916-95d3-c4140de4896b",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should close the modal when close button is clicked",
+                  "fullTitle": "Users can access information about the company or platform (About Us) at any time and close it again without interruption. Modal UI Interactions should close the modal when close button is clicked",
+                  "timedOut": null,
+                  "duration": 1348,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openAboutUsPage();\naboutUsModal.verifyModalIsVisible();\ncy.wait(500);\naboutUsModal.clickCloseButton();\naboutUsModal.verifyModalIsClosed();",
+                  "err": {},
+                  "uuid": "43386f1d-bf9a-4211-8b70-3e84d906a5d9",
+                  "parentUUID": "6723877b-84af-4916-95d3-c4140de4896b",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "27454aae-24fc-4864-b723-df60b37438f5",
+                "43386f1d-bf9a-4211-8b70-3e84d906a5d9"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 3420,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "b5d53f07-f4e5-4141-acf9-b8bbebec04f3",
+              "title": "Video Player Functionality",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should test video player controls (Play, Pause, Mute, Skip)",
+                  "fullTitle": "Users can access information about the company or platform (About Us) at any time and close it again without interruption. Video Player Functionality should test video player controls (Play, Pause, Mute, Skip)",
+                  "timedOut": null,
+                  "duration": 1119,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openAboutUsPage();\naboutUsModal.verifyModalIsVisible();\ncy.wait(500);\naboutUsModal.testVideoControls();",
+                  "err": {},
+                  "uuid": "09c9f723-fc35-4a34-8c53-a1045f7810a9",
+                  "parentUUID": "b5d53f07-f4e5-4141-acf9-b8bbebec04f3",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "09c9f723-fc35-4a34-8c53-a1045f7810a9"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1119,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "a10ff56a-2545-4b45-a513-5ca762e01180",
+              "title": "Post-Modal Exploration",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "allow user to continue exploring the website after closed the modal",
+                  "fullTitle": "Users can access information about the company or platform (About Us) at any time and close it again without interruption. Post-Modal Exploration allow user to continue exploring the website after closed the modal",
+                  "timedOut": null,
+                  "duration": 2311,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openAboutUsPage();\naboutUsModal.verifyModalIsVisible();\ncy.wait(500);\naboutUsModal.clickCloseButton();\naboutUsModal.verifyModalIsClosed();\nhomePage.clickProduct(\"Samsung galaxy s6\");\nhomePage.verifyProductDetailIsVisible();",
+                  "err": {},
+                  "uuid": "46e4274f-81b8-4e16-88c3-1e0170375818",
+                  "parentUUID": "a10ff56a-2545-4b45-a513-5ca762e01180",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "46e4274f-81b8-4e16-88c3-1e0170375818"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 2311,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/result",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

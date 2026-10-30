@@ -1,0 +1,271 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 6,
+    "passes": 3,
+    "pending": 0,
+    "failures": 3,
+    "start": "2026-10-30T00:23:52.904Z",
+    "end": "2026-10-30T00:24:34.344Z",
+    "duration": 41440,
+    "testsRegistered": 6,
+    "passPercent": 50,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "d9088317-79bc-427d-bfd0-225be54658a2",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demoblaze\\contact.cy.js",
+      "file": "cypress\\e2e\\demoblaze\\contact.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c679f0b5-2278-48be-8644-795fda53380f",
+          "title": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent.",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "55c4b756-0dcd-4d52-85e2-b4c2ced39752",
+              "title": "Modal ui interaction",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should showing modal form contact",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Modal ui interaction should showing modal form contact",
+                  "timedOut": null,
+                  "duration": 1777,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openContactPage();\ncontactModal.verifyModalIsVisible();",
+                  "err": {},
+                  "uuid": "b40387c5-bf7d-4069-9fff-9945cc89451c",
+                  "parentUUID": "55c4b756-0dcd-4d52-85e2-b4c2ced39752",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should close modal when close button is clicked",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Modal ui interaction should close modal when close button is clicked",
+                  "timedOut": null,
+                  "duration": 1297,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openContactPage();\ncontactModal.verifyModalIsVisible();\ncy.wait(500);\ncontactModal.clickCloseButton();\ncontactModal.verifyModalIsClosed();",
+                  "err": {},
+                  "uuid": "25005af7-dfdc-4a7a-b8db-a9b0cbdfe0bf",
+                  "parentUUID": "55c4b756-0dcd-4d52-85e2-b4c2ced39752",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "b40387c5-bf7d-4069-9fff-9945cc89451c",
+                "25005af7-dfdc-4a7a-b8db-a9b0cbdfe0bf"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 3074,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "22046895-dd73-47f8-8c1c-1a640a5f43b2",
+              "title": "Form validation (negative cases)",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should show error messaage when inputting an invalid email format",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Form validation (negative cases) should show error messaage when inputting an invalid email format",
+                  "timedOut": null,
+                  "duration": 8078,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const invalidEmail = _user.default.invalidUser.email;\nconst invalidName = _user.default.invalidUser.username;\nconst message = _user.default.message;\ncontactModal.fillForm(invalidEmail, invalidName, message);\ncontactModal.clickSendMessage();\ncontactModal.verifyModalIsVisible();\ncontactModal.verifyErrorMessageIsVisible();\ncy.get(\"@windowAlert\").should(\"not.have.been.called\");",
+                  "err": {
+                    "message": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.",
+                    "estack": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.\n    at ContactModalPage.verifyModalIsVisible (webpack://demoblaze-pom/./cypress/support/POM/contactModal.page.js:10:32)\n    at Context.eval (webpack://demoblaze-pom/./cypress/e2e/demoblaze/contact.cy.js:42:19)",
+                    "diff": null
+                  },
+                  "uuid": "df634544-dd20-411a-b24a-9d53051cf0c9",
+                  "parentUUID": "22046895-dd73-47f8-8c1c-1a640a5f43b2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should show error when one of the input fields is empty",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Form validation (negative cases) should show error when one of the input fields is empty",
+                  "timedOut": null,
+                  "duration": 10821,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const validName = _user.default.validUser.username;\nconst message = _user.default.message;\ncontactModal.fillForm(validName, message);\ncontactModal.clickSendMessage();\ncontactModal.verifyModalIsVisible();\ncontactModal.verifyErrorMessageIsVisible();\ncy.get(\"@windowAlert\").should(\"not.have.been.called\");",
+                  "err": {
+                    "message": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.",
+                    "estack": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.\n    at ContactModalPage.verifyModalIsVisible (webpack://demoblaze-pom/./cypress/support/POM/contactModal.page.js:10:32)\n    at Context.eval (webpack://demoblaze-pom/./cypress/e2e/demoblaze/contact.cy.js:52:19)",
+                    "diff": null
+                  },
+                  "uuid": "1d54f7b1-d5d3-49a8-a10a-6a9b58bfd643",
+                  "parentUUID": "22046895-dd73-47f8-8c1c-1a640a5f43b2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should show error when all input fields are empty",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Form validation (negative cases) should show error when all input fields are empty",
+                  "timedOut": null,
+                  "duration": 12552,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "contactModal.clickSendMessage();\ncontactModal.verifyModalIsVisible();\ncontactModal.verifyErrorMessageIsVisible();\ncy.get(\"@windowAlert\").should(\"not.have.been.called\");",
+                  "err": {
+                    "message": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.",
+                    "estack": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.\n    at ContactModalPage.verifyModalIsVisible (webpack://demoblaze-pom/./cypress/support/POM/contactModal.page.js:10:32)\n    at Context.eval (webpack://demoblaze-pom/./cypress/e2e/demoblaze/contact.cy.js:59:19)",
+                    "diff": null
+                  },
+                  "uuid": "88742519-0bd0-4c8a-a0d5-b94e30a5d3a7",
+                  "parentUUID": "22046895-dd73-47f8-8c1c-1a640a5f43b2",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "df634544-dd20-411a-b24a-9d53051cf0c9",
+                "1d54f7b1-d5d3-49a8-a10a-6a9b58bfd643",
+                "88742519-0bd0-4c8a-a0d5-b94e30a5d3a7"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 31451,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "f007de27-5f8a-48e0-a8a5-84500c38af51",
+              "title": "Happy path (positive cases)",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should send message successfully when all input fields are filled with valid data",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Happy path (positive cases) should send message successfully when all input fields are filled with valid data",
+                  "timedOut": null,
+                  "duration": 4833,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const validEmail = _user.default.validUser.email;\nconst validName = _user.default.validUser.username;\nconst message = _user.default.message;\ncontactModal.fillForm(validEmail, validName, message);\ncontactModal.clickSendMessage();\ncy.get(\"@windowAlert\").should(\"have.been.calledWith\", \"Thanks for the message!!\");",
+                  "err": {},
+                  "uuid": "0eed50ed-ce1c-4cad-a1ae-a54f3499d30a",
+                  "parentUUID": "f007de27-5f8a-48e0-a8a5-84500c38af51",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "0eed50ed-ce1c-4cad-a1ae-a54f3499d30a"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 4833,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/result",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "name": "demoblaze-pom",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "hafid hanifan",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "merge:reports": "mochawesome-merge cypress/result/mochawesome_*.json > cypress/result/merged-report.json",
+    "generate:html": "marge cypress/result/merged-report.json -f final-report -o cypress/result --inline"
+  },
+  "devDependencies": {
+    "cypress": "^16.2.1",
+    "dotenv": "^18.0.9",
+    "mochawesome": "^8.1.1",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2",
+    "rimraf": "^6.1.3"
+  }
+}

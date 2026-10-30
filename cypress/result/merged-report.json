@@ -1,0 +1,779 @@
+{
+  "stats": {
+    "suites": 4,
+    "tests": 17,
+    "passes": 13,
+    "pending": 0,
+    "failures": 4,
+    "testsRegistered": 17,
+    "passPercent": 76.47058823529412,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2026-10-30T00:23:19.293Z",
+    "end": "2026-10-30T00:24:48.969Z",
+    "duration": 89676
+  },
+  "results": [
+    {
+      "uuid": "823ace66-0725-4b88-a813-342aa9f79cde",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demoblaze\\about.cy.js",
+      "file": "cypress\\e2e\\demoblaze\\about.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7705fa55-66e3-42e7-8289-411cf3a43cfb",
+          "title": "Users can access information about the company or platform (About Us) at any time and close it again without interruption.",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "6723877b-84af-4916-95d3-c4140de4896b",
+              "title": "Modal UI Interactions",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should showing modal about us and company video",
+                  "fullTitle": "Users can access information about the company or platform (About Us) at any time and close it again without interruption. Modal UI Interactions should showing modal about us and company video",
+                  "timedOut": null,
+                  "duration": 2072,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openAboutUsPage();\naboutUsModal.verifyModalIsVisible();",
+                  "err": {},
+                  "uuid": "27454aae-24fc-4864-b723-df60b37438f5",
+                  "parentUUID": "6723877b-84af-4916-95d3-c4140de4896b",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should close the modal when close button is clicked",
+                  "fullTitle": "Users can access information about the company or platform (About Us) at any time and close it again without interruption. Modal UI Interactions should close the modal when close button is clicked",
+                  "timedOut": null,
+                  "duration": 1348,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openAboutUsPage();\naboutUsModal.verifyModalIsVisible();\ncy.wait(500);\naboutUsModal.clickCloseButton();\naboutUsModal.verifyModalIsClosed();",
+                  "err": {},
+                  "uuid": "43386f1d-bf9a-4211-8b70-3e84d906a5d9",
+                  "parentUUID": "6723877b-84af-4916-95d3-c4140de4896b",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "27454aae-24fc-4864-b723-df60b37438f5",
+                "43386f1d-bf9a-4211-8b70-3e84d906a5d9"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 3420,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "b5d53f07-f4e5-4141-acf9-b8bbebec04f3",
+              "title": "Video Player Functionality",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should test video player controls (Play, Pause, Mute, Skip)",
+                  "fullTitle": "Users can access information about the company or platform (About Us) at any time and close it again without interruption. Video Player Functionality should test video player controls (Play, Pause, Mute, Skip)",
+                  "timedOut": null,
+                  "duration": 1119,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openAboutUsPage();\naboutUsModal.verifyModalIsVisible();\ncy.wait(500);\naboutUsModal.testVideoControls();",
+                  "err": {},
+                  "uuid": "09c9f723-fc35-4a34-8c53-a1045f7810a9",
+                  "parentUUID": "b5d53f07-f4e5-4141-acf9-b8bbebec04f3",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "09c9f723-fc35-4a34-8c53-a1045f7810a9"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1119,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "a10ff56a-2545-4b45-a513-5ca762e01180",
+              "title": "Post-Modal Exploration",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "allow user to continue exploring the website after closed the modal",
+                  "fullTitle": "Users can access information about the company or platform (About Us) at any time and close it again without interruption. Post-Modal Exploration allow user to continue exploring the website after closed the modal",
+                  "timedOut": null,
+                  "duration": 2311,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openAboutUsPage();\naboutUsModal.verifyModalIsVisible();\ncy.wait(500);\naboutUsModal.clickCloseButton();\naboutUsModal.verifyModalIsClosed();\nhomePage.clickProduct(\"Samsung galaxy s6\");\nhomePage.verifyProductDetailIsVisible();",
+                  "err": {},
+                  "uuid": "46e4274f-81b8-4e16-88c3-1e0170375818",
+                  "parentUUID": "a10ff56a-2545-4b45-a513-5ca762e01180",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "46e4274f-81b8-4e16-88c3-1e0170375818"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 2311,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "0fc60b0c-abc3-487f-93cd-8ac2508ee160",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demoblaze\\carousel.cy.js",
+      "file": "cypress\\e2e\\demoblaze\\carousel.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "fdcb30df-c8f1-416e-bcae-ab6e175c0285",
+          "title": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content.",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "154761ec-f504-4311-b3da-8e0fdc990a43",
+              "title": "Auto Sliding Behavior",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "carousel should slide automatically",
+                  "fullTitle": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content. Auto Sliding Behavior carousel should slide automatically",
+                  "timedOut": null,
+                  "duration": 7781,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "carousel.verifyCarouselVisible();\ncarousel.verifyItemIsActive(0);\ncarousel.waitForAutoSlide();\ncarousel.verifyItemIsNotActive(0);\ncarousel.verifyItemIsActive(1);",
+                  "err": {},
+                  "uuid": "d1b59d9d-37a5-4e10-be4c-47a1d671537c",
+                  "parentUUID": "154761ec-f504-4311-b3da-8e0fdc990a43",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "d1b59d9d-37a5-4e10-be4c-47a1d671537c"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 7781,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "c9536878-7063-4e1e-a6d4-658be1974729",
+              "title": "Manual Sliding & Interaction",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "carousel should slide manualy via next and prev buttons",
+                  "fullTitle": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content. Manual Sliding & Interaction carousel should slide manualy via next and prev buttons",
+                  "timedOut": null,
+                  "duration": 1781,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "carousel.verifyCarouselVisible();\ncarousel.verifyItemIsActive(0);\n// next\ncarousel.clickNext();\ncarousel.verifyItemIsNotActive(0);\ncarousel.verifyItemIsActive(1);\n// prev\ncarousel.clickPrev();\ncarousel.verifyItemIsActive(0);\ncarousel.verifyItemIsNotActive(1);",
+                  "err": {},
+                  "uuid": "c689c6f7-ccff-4a3a-8e0f-ba0bc371ec82",
+                  "parentUUID": "c9536878-7063-4e1e-a6d4-658be1974729",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should not scroll the page down when carousel control is clicked rapidly",
+                  "fullTitle": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content. Manual Sliding & Interaction should not scroll the page down when carousel control is clicked rapidly",
+                  "timedOut": null,
+                  "duration": 1621,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "carousel.verifyPageNotScrolled();\ncarousel.rapidClickNext();\ncy.wait(500);\ncarousel.verifyPageNotScrolled();",
+                  "err": {
+                    "message": "Error: The following error originated from your application code, not from Cypress.\n\n  > Carousel is sliding\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application",
+                    "estack": "Error: The following error originated from your application code, not from Cypress.\n\n  > Carousel is sliding\n\nWhen Cypress detects uncaught errors originating from your application it will automatically fail the current test.\n\nThis behavior is configurable, and you can choose to turn this off by listening to the `uncaught:exception` event.\n\nhttps://on.cypress.io/uncaught-exception-from-application\n    at h.next (https://www.demoblaze.com/node_modules/bootstrap/dist/js/bootstrap.min.js:6:7449)\n    at HTMLDivElement.<anonymous> (https://www.demoblaze.com/node_modules/bootstrap/dist/js/bootstrap.min.js:6:11568)\n    at r.each (https://www.demoblaze.com/node_modules/jquery/dist/jquery.min.js:2:2715)\n    at r.fn.init.each (https://www.demoblaze.com/node_modules/jquery/dist/jquery.min.js:2:1003)\n    at h._jQueryInterface [as carousel] (https://www.demoblaze.com/node_modules/bootstrap/dist/js/bootstrap.min.js:6:11235)\n    at h._dataApiClickHandler (https://www.demoblaze.com/node_modules/bootstrap/dist/js/bootstrap.min.js:6:11859)\n    at HTMLDocument.dispatch (https://www.demoblaze.com/node_modules/jquery/dist/jquery.min.js:3:10316)\n    at q.handle (https://www.demoblaze.com/node_modules/jquery/dist/jquery.min.js:3:8343)\n    at sendEvent (https://www.demoblaze.com/__cypress/runner/cypress_runner.js:159746:32)\n    at sendMouseEvent (https://www.demoblaze.com/__cypress/runner/cypress_runner.js:159100:12)",
+                    "diff": null
+                  },
+                  "uuid": "d9fd2b37-c0dc-45a9-b529-29349e8a75cf",
+                  "parentUUID": "c9536878-7063-4e1e-a6d4-658be1974729",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "c689c6f7-ccff-4a3a-8e0f-ba0bc371ec82"
+              ],
+              "failures": [
+                "d9fd2b37-c0dc-45a9-b529-29349e8a75cf"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 3402,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "5c8b07fd-0eb6-46c2-b54b-69d5e439b1bc",
+              "title": "State Preservation After Navigation",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should continue to auto-play normally when the user switches pages and comes back",
+                  "fullTitle": "Promotional elements on the homepage (carousel) display content automatically as well as through manual user controls, without displaying broken or empty content. State Preservation After Navigation should continue to auto-play normally when the user switches pages and comes back",
+                  "timedOut": null,
+                  "duration": 8536,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "carousel.verifyCarouselVisible();\nhomePage.clickProduct(\"Samsung galaxy s6\");\nhomePage.verifyProductDetailIsVisible();\nnavbar.clickHomeMenu();\ncarousel.verifyItemIsActive(0);\ncarousel.waitForAutoSlide();\ncarousel.verifyItemIsNotActive(0);\ncarousel.verifyItemIsActive(1);",
+                  "err": {},
+                  "uuid": "6ff316df-e1d0-4a27-9983-dd5d2685d17d",
+                  "parentUUID": "5c8b07fd-0eb6-46c2-b54b-69d5e439b1bc",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "6ff316df-e1d0-4a27-9983-dd5d2685d17d"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 8536,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "d9088317-79bc-427d-bfd0-225be54658a2",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demoblaze\\contact.cy.js",
+      "file": "cypress\\e2e\\demoblaze\\contact.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "c679f0b5-2278-48be-8644-795fda53380f",
+          "title": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent.",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "55c4b756-0dcd-4d52-85e2-b4c2ced39752",
+              "title": "Modal ui interaction",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should showing modal form contact",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Modal ui interaction should showing modal form contact",
+                  "timedOut": null,
+                  "duration": 1777,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openContactPage();\ncontactModal.verifyModalIsVisible();",
+                  "err": {},
+                  "uuid": "b40387c5-bf7d-4069-9fff-9945cc89451c",
+                  "parentUUID": "55c4b756-0dcd-4d52-85e2-b4c2ced39752",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should close modal when close button is clicked",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Modal ui interaction should close modal when close button is clicked",
+                  "timedOut": null,
+                  "duration": 1297,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "cy.openContactPage();\ncontactModal.verifyModalIsVisible();\ncy.wait(500);\ncontactModal.clickCloseButton();\ncontactModal.verifyModalIsClosed();",
+                  "err": {},
+                  "uuid": "25005af7-dfdc-4a7a-b8db-a9b0cbdfe0bf",
+                  "parentUUID": "55c4b756-0dcd-4d52-85e2-b4c2ced39752",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "b40387c5-bf7d-4069-9fff-9945cc89451c",
+                "25005af7-dfdc-4a7a-b8db-a9b0cbdfe0bf"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 3074,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "22046895-dd73-47f8-8c1c-1a640a5f43b2",
+              "title": "Form validation (negative cases)",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should show error messaage when inputting an invalid email format",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Form validation (negative cases) should show error messaage when inputting an invalid email format",
+                  "timedOut": null,
+                  "duration": 8078,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const invalidEmail = _user.default.invalidUser.email;\nconst invalidName = _user.default.invalidUser.username;\nconst message = _user.default.message;\ncontactModal.fillForm(invalidEmail, invalidName, message);\ncontactModal.clickSendMessage();\ncontactModal.verifyModalIsVisible();\ncontactModal.verifyErrorMessageIsVisible();\ncy.get(\"@windowAlert\").should(\"not.have.been.called\");",
+                  "err": {
+                    "message": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.",
+                    "estack": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.\n    at ContactModalPage.verifyModalIsVisible (webpack://demoblaze-pom/./cypress/support/POM/contactModal.page.js:10:32)\n    at Context.eval (webpack://demoblaze-pom/./cypress/e2e/demoblaze/contact.cy.js:42:19)",
+                    "diff": null
+                  },
+                  "uuid": "df634544-dd20-411a-b24a-9d53051cf0c9",
+                  "parentUUID": "22046895-dd73-47f8-8c1c-1a640a5f43b2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should show error when one of the input fields is empty",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Form validation (negative cases) should show error when one of the input fields is empty",
+                  "timedOut": null,
+                  "duration": 10821,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "const validName = _user.default.validUser.username;\nconst message = _user.default.message;\ncontactModal.fillForm(validName, message);\ncontactModal.clickSendMessage();\ncontactModal.verifyModalIsVisible();\ncontactModal.verifyErrorMessageIsVisible();\ncy.get(\"@windowAlert\").should(\"not.have.been.called\");",
+                  "err": {
+                    "message": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.",
+                    "estack": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.\n    at ContactModalPage.verifyModalIsVisible (webpack://demoblaze-pom/./cypress/support/POM/contactModal.page.js:10:32)\n    at Context.eval (webpack://demoblaze-pom/./cypress/e2e/demoblaze/contact.cy.js:52:19)",
+                    "diff": null
+                  },
+                  "uuid": "1d54f7b1-d5d3-49a8-a10a-6a9b58bfd643",
+                  "parentUUID": "22046895-dd73-47f8-8c1c-1a640a5f43b2",
+                  "isHook": false,
+                  "skipped": false
+                },
+                {
+                  "title": "should show error when all input fields are empty",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Form validation (negative cases) should show error when all input fields are empty",
+                  "timedOut": null,
+                  "duration": 12552,
+                  "state": "failed",
+                  "speed": null,
+                  "pass": false,
+                  "fail": true,
+                  "pending": false,
+                  "context": null,
+                  "code": "contactModal.clickSendMessage();\ncontactModal.verifyModalIsVisible();\ncontactModal.verifyErrorMessageIsVisible();\ncy.get(\"@windowAlert\").should(\"not.have.been.called\");",
+                  "err": {
+                    "message": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.",
+                    "estack": "AssertionError: Timed out retrying after 6000ms: expected '<div#exampleModal.modal.fade>' to be 'visible'\n\nThis element `<div#exampleModal.modal.fade>` is not visible per `Element.checkVisibility()`. Computed: `display: none`, `visibility: visible`, `opacity: 0`, `content-visibility: visible`.\n    at ContactModalPage.verifyModalIsVisible (webpack://demoblaze-pom/./cypress/support/POM/contactModal.page.js:10:32)\n    at Context.eval (webpack://demoblaze-pom/./cypress/e2e/demoblaze/contact.cy.js:59:19)",
+                    "diff": null
+                  },
+                  "uuid": "88742519-0bd0-4c8a-a0d5-b94e30a5d3a7",
+                  "parentUUID": "22046895-dd73-47f8-8c1c-1a640a5f43b2",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [],
+              "failures": [
+                "df634544-dd20-411a-b24a-9d53051cf0c9",
+                "1d54f7b1-d5d3-49a8-a10a-6a9b58bfd643",
+                "88742519-0bd0-4c8a-a0d5-b94e30a5d3a7"
+              ],
+              "pending": [],
+              "skipped": [],
+              "duration": 31451,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "f007de27-5f8a-48e0-a8a5-84500c38af51",
+              "title": "Happy path (positive cases)",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should send message successfully when all input fields are filled with valid data",
+                  "fullTitle": "Users can send messages via the Contact form by entering valid data and receiving a confirmation that their message has been sent. Happy path (positive cases) should send message successfully when all input fields are filled with valid data",
+                  "timedOut": null,
+                  "duration": 4833,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "const validEmail = _user.default.validUser.email;\nconst validName = _user.default.validUser.username;\nconst message = _user.default.message;\ncontactModal.fillForm(validEmail, validName, message);\ncontactModal.clickSendMessage();\ncy.get(\"@windowAlert\").should(\"have.been.calledWith\", \"Thanks for the message!!\");",
+                  "err": {},
+                  "uuid": "0eed50ed-ce1c-4cad-a1ae-a54f3499d30a",
+                  "parentUUID": "f007de27-5f8a-48e0-a8a5-84500c38af51",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "0eed50ed-ce1c-4cad-a1ae-a54f3499d30a"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 4833,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    },
+    {
+      "uuid": "bbda5a2f-4829-4da2-b74a-df9ee43f2d64",
+      "title": "",
+      "fullFile": "cypress\\e2e\\demoblaze\\navbar-footer.cy.js",
+      "file": "cypress\\e2e\\demoblaze\\navbar-footer.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "7277a8a4-1222-4fe4-be53-c7b6ed5b7e9c",
+          "title": "Module Navigation and Footer Testing",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [],
+          "suites": [
+            {
+              "uuid": "e089f692-9c85-40e0-884e-dee6087d09f2",
+              "title": "Global Navigation Visibility",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should show navigation bar across different pages",
+                  "fullTitle": "Module Navigation and Footer Testing Global Navigation Visibility should show navigation bar across different pages",
+                  "timedOut": null,
+                  "duration": 3343,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "navbar.verifyNavigationBar();\nhomePage.clickProduct(\"Samsung galaxy s6\");\nnavbar.verifyNavigationBar();",
+                  "err": {},
+                  "uuid": "4581843c-bca9-44cd-94ef-3317c973b1cc",
+                  "parentUUID": "e089f692-9c85-40e0-884e-dee6087d09f2",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "4581843c-bca9-44cd-94ef-3317c973b1cc"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 3343,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "bc701375-e456-478e-a642-6f1621c3ec8b",
+              "title": "Navbar Routing & Link Behaviors",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should navigate to the correct section and display the target modals/pages",
+                  "fullTitle": "Module Navigation and Footer Testing Navbar Routing & Link Behaviors should navigate to the correct section and display the target modals/pages",
+                  "timedOut": null,
+                  "duration": 6490,
+                  "state": "passed",
+                  "speed": "medium",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "// home\nnavbar.clickHomeMenu();\nhomePage.verifyHomePageLoaded();\n// contact\nnavbar.clickContactUsButton();\ncontactModal.verifyModalIsVisible();\ncy.wait(500);\ncontactModal.clickCloseButton();\ncontactModal.verifyModalIsClosed();\n// about Us\nnavbar.clickAboutUsButton();\naboutUsModal.verifyModalIsVisible();\ncy.wait(500);\naboutUsModal.clickCloseButton();\naboutUsModal.verifyModalIsClosed();\n// cart\nnavbar.clickCartMenu();\ncartPage.verifyCartPageLoaded();\n// log in\nnavbar.clickLoginMenu();\nloginModal.verifyModalVisible();\ncy.wait(500);\nloginModal.clickCloseButton();\nloginModal.verifyModalClosed();\n// sign up\nnavbar.clickSignUpMenu();\nsignUpModal.verifyModalVisible();\ncy.wait(500);\nsignUpModal.clickCloseButton();\nsignUpModal.verifyModalClosed();",
+                  "err": {},
+                  "uuid": "dea24524-b86b-459f-85c2-abc68733a924",
+                  "parentUUID": "bc701375-e456-478e-a642-6f1621c3ec8b",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "dea24524-b86b-459f-85c2-abc68733a924"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 6490,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            },
+            {
+              "uuid": "b6f3bd12-7e23-4e87-97b2-f5f939689a9a",
+              "title": "Global Footer Consistency",
+              "fullFile": "",
+              "file": "",
+              "beforeHooks": [],
+              "afterHooks": [],
+              "tests": [
+                {
+                  "title": "should display correct footer information on Home and Cart pages",
+                  "fullTitle": "Module Navigation and Footer Testing Global Footer Consistency should display correct footer information on Home and Cart pages",
+                  "timedOut": null,
+                  "duration": 1846,
+                  "state": "passed",
+                  "speed": "fast",
+                  "pass": true,
+                  "fail": false,
+                  "pending": false,
+                  "context": null,
+                  "code": "footer.verifyFooterVisible();\nfooter.verifyFooterContent();\nnavbar.clickCartMenu();\ncartPage.verifyCartPageLoaded();\nfooter.verifyFooterVisible();\nfooter.verifyFooterContent();",
+                  "err": {},
+                  "uuid": "a614a5e4-e728-4506-9e93-226a80ca8f2c",
+                  "parentUUID": "b6f3bd12-7e23-4e87-97b2-f5f939689a9a",
+                  "isHook": false,
+                  "skipped": false
+                }
+              ],
+              "suites": [],
+              "passes": [
+                "a614a5e4-e728-4506-9e93-226a80ca8f2c"
+              ],
+              "failures": [],
+              "pending": [],
+              "skipped": [],
+              "duration": 1846,
+              "root": false,
+              "rootEmpty": false,
+              "_timeout": 2000
+            }
+          ],
+          "passes": [],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 0,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "8.1.1"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/result",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
