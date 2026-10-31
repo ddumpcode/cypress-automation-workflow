@@ -33,3 +33,31 @@ jobs:
 
       - name: run cypress tests
         run: npx cypress run --spec "cypress/e2e/demoblaze/**/*.cy.js"
+
+      - name: send discord notification
+        if: always()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.CYPRESS_REPORT_DISCORD_WEBHOOK }}
+          STATUS: ${{ job.status }}
+          REPOSITORY: ${{ github.repository }}
+          BRANCH: ${{ github.ref_name }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ "$STATUS" = "success" ]; then
+            MESSAGE="✅ Cypress Tests PASSED"
+          else
+            MESSAGE="❌ Cypress Tests FAILED"
+          fi
+
+          PAYLOAD=$(jq -n \
+            --arg content "$MESSAGE
+
+          Repository: $REPOSITORY
+          Branch: $BRANCH
+          Workflow: $RUN_URL" \
+            '{content: $content}')
+
+          curl -H "Content-Type: application/json" \
+            -X POST \
+            -d "$PAYLOAD" \
+            "$DISCORD_WEBHOOK"
