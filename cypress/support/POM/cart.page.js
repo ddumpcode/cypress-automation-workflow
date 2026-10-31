@@ -1,8 +1,8 @@
 class CartPage {
-  pageTitle = "h2:contains('Products')";
+  pageTitle = "#page-wrapper";
 
   verifyCartPageLoaded() {
-    cy.get(this.pageTitle).should("be.visible");
+    cy.get(this.pageTitle).contains("Products").should("be.visible");
   }
 }
 
