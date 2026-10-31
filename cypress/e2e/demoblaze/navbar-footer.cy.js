@@ -2,7 +2,7 @@ import NavbarPage from "../../support/POM/navbar.page";
 import HomePage from "../../support/POM/home.page";
 import FooterPage from "../../support/POM/footer.page";
 import CartPage from "../../support/POM/cart.page";
-import ContactModalPage from "../../support/POM/ContactModal.page";
+import ContactModalPage from "../../support/POM/contactModal.page";
 import AboutUsModalPage from "../../support/POM/aboutUsModal.page";
 import LoginModalPage from "../../support/POM/loginModal.page";
 import SignUpModalPage from "../../support/POM/signUpModal.page";
