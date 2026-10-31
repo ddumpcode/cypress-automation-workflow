@@ -17,17 +17,18 @@ on:
 jobs:
   cypress:
     runs-on: ubuntu-latest
+
     steps:
       - name: checkout code
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
 
       - name: setup node.js
-        uses: action/setup-node@4
+        uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
-      - name: install depedencies
+      - name: install dependencies
         run: npm ci
 
       - name: run cypress tests
