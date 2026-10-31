@@ -1,6 +1,6 @@
 class HomePage {
   productCardTitle = ".card-title";
-  productDetailContainer = ".hrefch"; // typo bawaan dari demoblaze
+  productDetailContainer = ".product-deatil"; // typo bawaan dari demoblaze
   mainContainer = "#contcont";
 
   verifyHomePageLoaded() {
