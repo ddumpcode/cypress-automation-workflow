@@ -12,7 +12,11 @@ on:
   workflow_dispatch:
 
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "17 5 * * 1-5"
+      timezone: "Asia/Jakarta"
+
+    - cron: "17 13 * * 1-5"
+      timezone: "Asia/Jakarta"
 
 jobs:
   cypress:
