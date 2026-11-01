@@ -67,6 +67,24 @@ jobs:
           FAILED=$(echo "$STATS" | jq -r '.failed')
           PENDING=$(echo "$STATS" | jq -r '.pending')
 
+          # Get test results per spec
+          SPEC_RESULTS=""
+
+          for report in "${REPORTS[@]}"; do
+            SPEC_LINES=$(jq -r '
+              .results[]? |
+              "\((.file // .fullFile // .title // "unknown") | split("/")[-1])  ✅ \(.passes // 0) | ❌ \(.failures // 0)"
+            ' "$report")
+
+            if [ -n "$SPEC_LINES" ]; then
+              SPEC_RESULTS+="${SPEC_LINES}"$'\n'
+            fi
+          done
+
+          if [ -z "$SPEC_RESULTS" ]; then
+            SPEC_RESULTS="No spec report available"
+          fi
+
           # Set embed status and color
           if [ "$STATUS" = "success" ]; then
             TITLE="✅ Cypress Test Execution - PASSED"
@@ -83,6 +101,7 @@ jobs:
             --arg branch "$BRANCH" \
             --arg event "$EVENT" \
             --arg url "$RUN_URL" \
+            --arg spec_results "$SPEC_RESULTS" \
             --argjson color "$COLOR" \
             --argjson total "$TOTAL" \
             --argjson passed "$PASSED" \
@@ -128,7 +147,13 @@ jobs:
                     name: "⏳ Pending",
                     value: ($pending | tostring),
                     inline: true
+                  },
+                  {
+                    name: "📋 Test Results per Spec",
+                    value: ("```" + $spec_results + "```"),
+                    inline: false
                   }
+                  
                 ],
                 footer: {
                   text: "Cypress Automation | DemoBlaze"
