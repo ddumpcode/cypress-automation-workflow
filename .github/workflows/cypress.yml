@@ -73,7 +73,7 @@ jobs:
           for report in "${REPORTS[@]}"; do
             SPEC_LINES=$(jq -r '
               .results[]? |
-              "\((.file // .fullFile // .title // "unknown") | split("/")[-1])  ✅ \(.passes // 0) | ❌ \(.failures // 0)"
+              "\((.file // .fullFile // .title // "unknown") | split("/")[-1])  ✅ \((.passes // [] | length)) | ❌ \((.failures // [] | length))"
             ' "$report")
 
             if [ -n "$SPEC_LINES" ]; then
