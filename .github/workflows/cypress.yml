@@ -31,6 +31,9 @@ jobs:
       - name: install dependencies
         run: npm ci
 
+      - name: clean old test reports
+        run: rm -f cypress/result/*.json
+
       - name: run cypress tests
         run: npx cypress run --spec "cypress/e2e/demoblaze/**/*.cy.js"
 
@@ -41,23 +44,100 @@ jobs:
           STATUS: ${{ job.status }}
           REPOSITORY: ${{ github.repository }}
           BRANCH: ${{ github.ref_name }}
+          EVENT: ${{ github.event_name }}
           RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
         run: |
-          if [ "$STATUS" = "success" ]; then
-            MESSAGE="✅ Cypress Tests PASSED"
+          # read mochawesome json reports
+          shopt -s nullglob
+          REPORTS=(cypress/result/*.json)
+
+          if [ ${#REPORTS[@]} -gt 0 ]; then
+            STATS=$(jq -s '{
+              total: (map(.stats.tests // 0) | add // 0),
+              passed: (map(.stats.passes // 0) | add // 0),
+              failed: (map(.stats.failures // 0) | add // 0),
+              pending: (map(.stats.pending // 0) | add // 0)
+            }' "${REPORTS[@]}")
           else
-            MESSAGE="❌ Cypress Tests FAILED"
+            STATS='{"total":0,"passed":0,"failed":0,"pending":0}'
           fi
 
+          TOTAL=$(echo "$STATS" | jq -r '.total')
+          PASSED=$(echo "$STATS" | jq -r '.passed')
+          FAILED=$(echo "$STATS" | jq -r '.failed')
+          PENDING=$(echo "$STATS" | jq -r '.pending')
+
+          # Set embed status and color
+          if [ "$STATUS" = "success" ]; then
+            TITLE="✅ Cypress Test Execution - PASSED"
+            COLOR=3066993
+          else
+            TITLE="❌ Cypress Test Execution - FAILED"
+            COLOR=15158332
+          fi
+
+          # Create Discord Embed
           PAYLOAD=$(jq -n \
-            --arg content "$MESSAGE
+            --arg title "$TITLE" \
+            --arg repo "$REPOSITORY" \
+            --arg branch "$BRANCH" \
+            --arg event "$EVENT" \
+            --arg url "$RUN_URL" \
+            --argjson color "$COLOR" \
+            --argjson total "$TOTAL" \
+            --argjson passed "$PASSED" \
+            --argjson failed "$FAILED" \
+            --argjson pending "$PENDING" \
+            '{
+              embeds: [{
+                title: $title,
+                url: $url,
+                color: $color,
+                fields: [
+                  {
+                    name: "Repository",
+                    value: $repo,
+                    inline: false
+                  },
+                  {
+                    name: "Branch",
+                    value: $branch,
+                    inline: true
+                  },
+                  {
+                    name: "Trigger",
+                    value: $event,
+                    inline: true
+                  },
+                  {
+                    name: "Total Tests",
+                    value: ($total | tostring),
+                    inline: true
+                  },
+                  {
+                    name: "✅ Passed",
+                    value: ($passed | tostring),
+                    inline: true
+                  },
+                  {
+                    name: "❌ Failed",
+                    value: ($failed | tostring),
+                    inline: true
+                  },
+                  {
+                    name: "⏳ Pending",
+                    value: ($pending | tostring),
+                    inline: true
+                  }
+                ],
+                footer: {
+                  text: "Cypress Automation | DemoBlaze"
+                }
+              }]
+            }')
 
-          Repository: $REPOSITORY
-          Branch: $BRANCH
-          Workflow: $RUN_URL" \
-            '{content: $content}')
-
-          curl -H "Content-Type: application/json" \
+          curl -fsS \
+            -H "Content-Type: application/json" \
             -X POST \
             -d "$PAYLOAD" \
             "$DISCORD_WEBHOOK"
