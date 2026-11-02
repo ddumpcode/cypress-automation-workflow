@@ -57,6 +57,29 @@ jobs:
           if-no-files-found: warn
           retention-days: 7
 
+      - name: debug mochawesome reports
+        if: always()
+        run: |
+          echo "========== REPORT FILES =========="
+          find cypress/result -maxdepth 1 -type f -name "*.json" -print
+
+          echo "========== REPORT COUNT =========="
+          find cypress/result -maxdepth 1 -type f -name "*.json" | wc -l
+
+          echo "========== REPORT DETAILS =========="
+          for report in cypress/result/*.json; do
+            [ -f "$report" ] || continue
+
+            echo "--------------------------------"
+            echo "FILE: $report"
+
+            jq '{
+              total: .stats.tests,
+              passed: .stats.passes,
+              failed: .stats.failures,
+              specs: [.results[].file]
+            }' "$report"
+          done
   # ==========================================
   # JOB 2: GENERATE & DEPLOY REPORT
   # ==========================================
