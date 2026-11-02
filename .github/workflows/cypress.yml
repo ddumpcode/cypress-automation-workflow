@@ -335,11 +335,13 @@ jobs:
                     value:$duration_text,
                     inline:true
                   },
+                  {name:"\u200b",value:"\u200b",inline:false},
                   {
                     name:"❌ Failed Test Cases",
                     value:("```text\n" + $failed_tests + "```"),
                     inline:false
                   },
+                  {name:"\u200b",value:"\u200b",inline:false},
                   {
                     name:"🌐 HTML Test Report",
                     value:$report_text,
