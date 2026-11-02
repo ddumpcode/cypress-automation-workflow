@@ -130,24 +130,21 @@ jobs:
             npx mochawesome-merge "cypress/result/*.json" \
               -o merged-report.json
 
+            echo "========== MERGED REPORT SUMMARY =========="
+
+            jq '{
+              total: .stats.tests,
+              passed: .stats.passes,
+              failed: .stats.failures,
+              specs: [.results[].file]
+            }' merged-report.json
+
             npx marge merged-report.json \
               --reportDir cypress/report \
               --reportFilename index \
               --inline
           else
             echo "No Cypress JSON reports available."
-            cat > cypress/report/index.html <<'EOF'
-          <!DOCTYPE html>
-          <html>
-          <head>
-            <title>Cypress Test Report</title>
-          </head>
-          <body>
-            <h1>Cypress Test Report</h1>
-            <p>No test report was generated.</p>
-          </body>
-          </html>
-          EOF
           fi
 
       - name: configure github pages
