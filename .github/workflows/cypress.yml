@@ -315,7 +315,7 @@ jobs:
                 ),
                 fields: [
                   {name:"Trigger",value:$event,inline:true},
-                  {name:"Total Tests",value:($total|tostring),inline:true},
+                  {name:"Total Tests",value:("\n" + ($total|tostring)),inline:true},
                   {name:"✅ Passed",value:($passed|tostring),inline:true},
                   {name:"❌ Failed",value:($failed|tostring),inline:true},
                   {name:"⏳ Pending",value:($pending|tostring),inline:true},
