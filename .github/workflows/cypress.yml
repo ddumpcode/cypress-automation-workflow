@@ -57,29 +57,6 @@ jobs:
           if-no-files-found: warn
           retention-days: 7
 
-      - name: debug mochawesome reports
-        if: always()
-        run: |
-          echo "========== REPORT FILES =========="
-          find cypress/result -maxdepth 1 -type f -name "*.json" -print
-
-          echo "========== REPORT COUNT =========="
-          find cypress/result -maxdepth 1 -type f -name "*.json" | wc -l
-
-          echo "========== REPORT DETAILS =========="
-          for report in cypress/result/*.json; do
-            [ -f "$report" ] || continue
-
-            echo "--------------------------------"
-            echo "FILE: $report"
-
-            jq '{
-              total: .stats.tests,
-              passed: .stats.passes,
-              failed: .stats.failures,
-              specs: [.results[].file]
-            }' "$report"
-          done
   # ==========================================
   # JOB 2: GENERATE & DEPLOY REPORT
   # ==========================================
@@ -130,21 +107,24 @@ jobs:
             npx mochawesome-merge "cypress/result/*.json" \
               -o merged-report.json
 
-            echo "========== MERGED REPORT SUMMARY =========="
-
-            jq '{
-              total: .stats.tests,
-              passed: .stats.passes,
-              failed: .stats.failures,
-              specs: [.results[].file]
-            }' merged-report.json
-
             npx marge merged-report.json \
               --reportDir cypress/report \
               --reportFilename index \
               --inline
           else
             echo "No Cypress JSON reports available."
+            cat > cypress/report/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Cypress Test Report</title>
+          </head>
+          <body>
+            <h1>Cypress Test Report</h1>
+            <p>No test report was generated.</p>
+          </body>
+          </html>
+          EOF
           fi
 
       - name: configure github pages
