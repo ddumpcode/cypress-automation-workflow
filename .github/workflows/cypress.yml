@@ -161,6 +161,8 @@ jobs:
       BRANCH: ${{ github.head_ref || github.ref_name }}
       EVENT: ${{ github.event_name }}
       RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+      RUN_NUMBER: ${{ github.run_number }}
+      RUN_ATTEMPT: ${{ github.run_attempt }}
 
     steps:
       - name: download mochawesome json reports
@@ -191,6 +193,37 @@ jobs:
           FAILED=$(echo "$STATS" | jq -r '.failed')
           PENDING=$(echo "$STATS" | jq -r '.pending')
 
+          # Get execution time and duration
+          if [ ${#REPORTS[@]} -gt 0 ]; then
+            START_TIME=$(jq -s -r '
+              [.[].stats.start // empty] | min // empty
+            ' "${REPORTS[@]}")
+
+            END_TIME=$(jq -s -r '
+              [.[].stats.end // empty] | max // empty
+            ' "${REPORTS[@]}")
+          else
+            START_TIME=""
+            END_TIME=""
+          fi
+
+          if [ -n "$START_TIME" ] && [ -n "$END_TIME" ]; then
+            EXECUTION_TIME=$(TZ=Asia/Jakarta date -d "$START_TIME" '+%d %b %Y, %H:%M:%S WIB')
+
+            START_SECONDS=$(date -d "$START_TIME" +%s)
+            END_SECONDS=$(date -d "$END_TIME" +%s)
+
+            DURATION_SECONDS=$((END_SECONDS - START_SECONDS))
+
+            MINUTES=$((DURATION_SECONDS / 60))
+            REMAINING_SECONDS=$((DURATION_SECONDS % 60))
+
+            DURATION_TEXT="${MINUTES}m ${REMAINING_SECONDS}s"
+          else
+            EXECUTION_TIME="Unavailable"
+            DURATION_TEXT="Unavailable"
+          fi
+
           # Get test results per spec
           SPEC_RESULTS=""
 
@@ -210,6 +243,26 @@ jobs:
             SPEC_RESULTS="No spec report available"
           fi
 
+          # Get failed test cases
+          FAILED_TESTS=""
+
+          for report in "${REPORTS[@]}"; do
+            FAILED_LINES=$(jq -r '
+              .results[] |
+              .. | objects | .tests[]? |
+              select(.state == "failed") |
+              "- ❌ \(.fullTitle // .title)"
+            ' "$report")
+
+            if [ -n "$FAILED_LINES" ]; then
+              FAILED_TESTS+="${FAILED_LINES}"$'\n'
+            fi
+          done
+
+          if [ -z "$FAILED_TESTS" ]; then
+            FAILED_TESTS="No failed test cases"
+          fi
+
           # Set test status and color
           if [ "$TEST_STATUS" = "success" ]; then
             TITLE="✅ Cypress Tests PASSED"
@@ -226,6 +279,7 @@ jobs:
           fi
 
           # Create Discord Embed
+          RUN_TEXT="[Run #${RUN_NUMBER} - Attempt ${RUN_ATTEMPT}]($RUN_URL)"
           PAYLOAD=$(jq -n \
             --arg title "$TITLE" \
             --arg repo "$REPOSITORY" \
@@ -241,6 +295,10 @@ jobs:
             --argjson passed "$PASSED" \
             --argjson failed "$FAILED" \
             --argjson pending "$PENDING" \
+            --arg run_text "$RUN_TEXT" \
+            --arg execution_time "$EXECUTION_TIME" \
+            --arg duration_text "$DURATION_TEXT" \
+            --arg failed_tests "$FAILED_TESTS" \
             '{
               embeds: [{
                 title: $title,
@@ -249,7 +307,8 @@ jobs:
                 description: (
                   "**DEMOBLAZE AUTOMATION REPORT**\n" +
                   "**Repository:** " + $repo + "\n" +
-                  "**Branch:** `" + $branch + "`"
+                  "**Branch:** `" + $branch + "`\n" +
+                  "**Execution:** " + $run_text
                 ),
                 fields: [
                   {name:"Trigger",value:$event,inline:true},
@@ -260,6 +319,21 @@ jobs:
                   {
                     name:"📋 Test Results per Spec",
                     value:("```text\n" + $spec_results + "```"),
+                    inline:false
+                  },
+                  {
+                    name:"🕒 Execution Time",
+                    value:$execution_time,
+                    inline:true
+                  },
+                  {
+                    name:"⏱️ Duration",
+                    value:$duration_text,
+                    inline:true
+                  },
+                  {
+                    name:"❌ Failed Test Cases",
+                    value:("```text\n" + $failed_tests + "```"),
                     inline:false
                   },
                   {
