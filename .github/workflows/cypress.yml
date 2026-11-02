@@ -251,7 +251,7 @@ jobs:
               .results[] |
               .. | objects | .tests[]? |
               select(.state == "failed") |
-              "- ❌ \(.fullTitle // .title)"
+              "- ❌ \(.title | if length > 80 then (.[0:77] + "...") else . end)"
             ' "$report")
 
             if [ -n "$FAILED_LINES" ]; then
@@ -261,6 +261,9 @@ jobs:
 
           if [ -z "$FAILED_TESTS" ]; then
             FAILED_TESTS="No failed test cases"
+          elif [ ${#FAILED_TESTS} -gt 1000 ]; then
+            # Batas aman Discord webhook description/fields
+            FAILED_TESTS="${FAILED_TESTS:0:950}... (Terpotong, cek HTML Report untuk detail penuh)"
           fi
 
           # Set test status and color
